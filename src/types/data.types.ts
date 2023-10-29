@@ -1,8 +1,14 @@
-export type ClipboardType = GroupData[] | null
+export type ClipboardType = TabData[] | null
+
+export interface TabData {
+  title: string
+  value: GroupData[]
+}
 
 export interface GroupData {
   type: "group"
-  value: GroupData | StringData | LinkData | PassData
+  name: string
+  value: (GroupData | StringData | LinkData | PassData)[]
 }
 
 interface BaseData {
