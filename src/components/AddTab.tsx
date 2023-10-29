@@ -11,7 +11,6 @@ import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {useState} from "react";
 import {useDataStore} from "@/store/useDataStore.ts";
-import {JsonService} from "@/services/json.service.ts";
 
 export default function AddTab() {
   const [name, setName] = useState<string>('')
@@ -19,7 +18,6 @@ export default function AddTab() {
 
   function handleSubmit() {
     dataStore.addTab(name)
-    JsonService.setLocalData(dataStore.data)
   }
 
   return (

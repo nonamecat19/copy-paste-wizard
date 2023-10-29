@@ -1,5 +1,6 @@
 import {create} from 'zustand'
 import {ClipboardType, GroupData} from "@/types/data.types.ts";
+import {persist} from "zustand/middleware";
 
 interface IStore {
   data: ClipboardType
@@ -14,7 +15,7 @@ interface IActions {
   addGroup: (title: string) => void
 }
 
-export const useDataStore = create<IStore & IActions>((set) => ({
+export const useDataStore = create<IStore & IActions>()(persist((set) => ({
   data: [],
   currentTab: 0,
   setData: (data) => set({data}),
@@ -38,8 +39,11 @@ export const useDataStore = create<IStore & IActions>((set) => ({
           name: title,
           value: []
         };
+
         state.data[state.currentTab].value.push(newGroup)
-        return { data: [...state.data] };
+        return {
+          data: [...state.data]
+        };
     })
   }
-}))
+}), {name: 'zustand'}))

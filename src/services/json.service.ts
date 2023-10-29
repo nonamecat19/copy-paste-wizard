@@ -41,13 +41,4 @@ export class JsonService {
       console.error({e})
     }
   }
-
-  static setLocalData(data: ClipboardType): void {
-    try {
-      const text = JSON.stringify(data)
-      localStorage.setItem(localStorageKey, text)
-    } catch (e) {
-      console.error({e})
-    }
-  }
 }

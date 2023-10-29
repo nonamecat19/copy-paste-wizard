@@ -10,7 +10,6 @@ import {Button} from "@/components/ui/button.tsx";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import {useState} from "react";
-import {JsonService} from "@/services/json.service.ts";
 import {useDataStore} from "@/store/useDataStore.ts";
 
 export default function AddGroup() {
@@ -18,10 +17,6 @@ export default function AddGroup() {
   const dataStore = useDataStore()
   function submitHandle() {
     dataStore.addGroup(name)
-    setTimeout(() => {
-      console.log(dataStore.data)
-      JsonService.setLocalData(dataStore.data)
-    }, 500)
   }
 
   return (

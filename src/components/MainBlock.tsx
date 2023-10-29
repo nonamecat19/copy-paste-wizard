@@ -1,19 +1,9 @@
 import {useDataStore} from "@/store/useDataStore.ts";
-import {useEffect} from "react";
-import {JsonService} from "@/services/json.service.ts";
 import CopyElement from "@/components/CopyElement.tsx";
 import AddGroup from "@/components/AddGroup.tsx";
 
 export default function MainBlock() {
   const store = useDataStore()
-
-  useEffect(() => {
-    const data = JsonService.loadData()
-    if (!data) {
-      return
-    }
-    store.setData(data)
-  }, [])
 
   if (!store.data || store.data.length === 0) {
     return <>No data</>
@@ -30,7 +20,7 @@ export default function MainBlock() {
             className='bg-zinc-950 border border-zinc-800 p-2 rounded-lg'
             key={index}
           >
-            <div className=''>
+            <div>
               {name}
             </div>
 
