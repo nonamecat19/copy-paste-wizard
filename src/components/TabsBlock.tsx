@@ -1,16 +1,12 @@
 import {useDataStore} from "@/store/useDataStore.ts";
 import {Button} from "@/components/ui/button.tsx";
-import AddDialog from "@/components/AddDialog.tsx";
+import AddTab from "@/components/AddTab.tsx";
 
 export default function TabsBlock() {
   const store = useDataStore()
 
   function changeTabHandle(index: number) {
     store.setCurrentTab(index)
-  }
-
-  if (!store.data || store.data.length === 0) {
-    return null
   }
 
   return (
@@ -25,7 +21,7 @@ export default function TabsBlock() {
           />
         )
       }
-      <AddDialog/>
+      <AddTab/>
     </div>
   )
 }

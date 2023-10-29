@@ -1,4 +1,4 @@
-export type ClipboardType = TabData[] | null
+export type ClipboardType = TabData[]
 
 export interface TabData {
   title: string

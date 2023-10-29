@@ -2,6 +2,7 @@ import {useDataStore} from "@/store/useDataStore.ts";
 import {useEffect} from "react";
 import {JsonService} from "@/services/json.service.ts";
 import CopyElement from "@/components/CopyElement.tsx";
+import AddGroup from "@/components/AddGroup.tsx";
 
 export default function MainBlock() {
   const store = useDataStore()
@@ -54,6 +55,7 @@ export default function MainBlock() {
         )
       }
 
+      <AddGroup/>
     </div>
   )
 }
