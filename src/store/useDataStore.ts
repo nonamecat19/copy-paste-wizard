@@ -1,11 +1,12 @@
 import { create } from 'zustand'
+import {ClipboardType} from "@/types/data.types.ts";
 
 interface IStore {
   data: any
 }
 
 interface IActions {
-  setData: (data: string) => void
+  setData: (data: ClipboardType) => void
   clearData: () => void
 }
 

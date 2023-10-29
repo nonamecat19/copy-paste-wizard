@@ -2,13 +2,24 @@
   {
     "type": "group",
     "value": [
-
+      {
+        "type": "string",
+        "value": "value1"
+      },
+      {
+        "type": "link",
+        "value": "google.com"
+      },
+      {
+        "type": "pass",
+        "value": "123s123g54t3b3"
+      }
     ]
   },
   {
     "type": "group",
     "value": [
-      
+
     ]
   }
 ]
