@@ -19,21 +19,29 @@ export default function Navbar() {
   }
 
   return (
-    <nav className='border-b px-2 border-zinc-800 h-14 flex justify-between items-center'>
+    <nav className='border-b px-4 border-zinc-800 h-14 flex justify-between items-center'>
       <div className="logo">
         Logo
       </div>
 
       <div className='flex gap-2'>
-        <Button onClick={resetHandle}>
+        <Button
+          onClick={resetHandle}
+          variant='outline'
+        >
           Reset
         </Button>
 
-        <Button onClick={importHandle}>
+        <Button
+          onClick={importHandle}
+          variant='outline'
+        >
           Import
         </Button>
 
-        <Button>
+        <Button
+          variant='outline'
+        >
           Export
         </Button>
       </div>

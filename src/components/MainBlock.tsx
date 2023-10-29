@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {JsonService} from "@/services/json.service.ts";
 import CopyElement from "@/components/CopyElement.tsx";
 
-export default function Copy() {
+export default function MainBlock() {
   const store = useDataStore()
 
   useEffect(() => {
@@ -29,7 +29,9 @@ export default function Copy() {
             className='bg-zinc-950 border border-zinc-800 p-2 rounded-lg'
             key={index}
           >
-            {name}
+            <div className=''>
+              {name}
+            </div>
 
             <div className='flex flex-wrap gap-2 mt-2'>
               {
