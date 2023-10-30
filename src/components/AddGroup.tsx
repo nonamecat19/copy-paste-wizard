@@ -9,18 +9,27 @@ import {
 import {Button} from "@/components/ui/button.tsx";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDataStore} from "@/store/useDataStore.ts";
+import useSwitch from "@/hooks/useSwitch.ts";
 
 export default function AddGroup() {
   const [name, setName] = useState<string>('')
   const dataStore = useDataStore()
+
+  const [open, setOpen, switchOpen] = useSwitch()
+
+  useEffect(() => {
+    setName('')
+  }, [open])
+
   function submitHandle() {
     dataStore.addGroup(name)
+    switchOpen()
   }
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">
           +

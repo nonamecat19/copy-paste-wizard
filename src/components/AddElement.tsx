@@ -9,10 +9,11 @@ import {
 import {Button} from "@/components/ui/button.tsx";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDataStore} from "@/store/useDataStore.ts";
 import {ElementType} from "@/types/data.types.ts";
 import {SelectValue, Select, SelectItem, SelectContent, SelectTrigger } from "./ui/select";
+import useSwitch from "@/hooks/useSwitch.ts";
 
 interface IProps {
   index: number
@@ -25,13 +26,21 @@ export default function AddElement({index}: IProps) {
 
   const dataStore = useDataStore()
 
+  const [open, setOpen, switchOpen] = useSwitch()
+
+  useEffect(() => {
+    setValue('')
+    setType('string')
+    setLabel('')
+  }, [open])
+
   function handleSubmit() {
-    console.log({value, type, label, index})
     dataStore.addElement(value, type, label, index)
+    switchOpen()
   }
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">
           +
