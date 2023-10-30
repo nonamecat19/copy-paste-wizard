@@ -54,7 +54,7 @@ export default function AddGroup() {
         <DialogFooter>
           <Button
             type="submit"
-            onChange={submitHandle}
+            onClick={submitHandle}
           >
             Add group
           </Button>

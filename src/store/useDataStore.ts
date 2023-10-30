@@ -1,6 +1,8 @@
 import {create} from 'zustand'
 import {ClipboardType, GroupData} from "@/types/data.types.ts";
 import {persist} from "zustand/middleware";
+import {immer} from 'zustand/middleware/immer'
+import produce from 'immer';
 
 interface IStore {
   data: ClipboardType
@@ -15,35 +17,30 @@ interface IActions {
   addGroup: (title: string) => void
 }
 
-export const useDataStore = create<IStore & IActions>()(persist((set) => ({
+export const useDataStore = create<IStore & IActions>()
+(persist(immer((set) => ({
   data: [],
   currentTab: 0,
   setData: (data) => set({data}),
   clearData: () => set({data: []}),
   setCurrentTab: (currentTab) => set({currentTab}),
   addTab: (title) => {
-    set((state) => ({
-      data: [
-        ...state.data,
-        {
-          title,
-          value: []
-        }
-      ]
-    }))
+    set((state) => {
+      const newTab = {
+        title,
+        value: []
+      }
+      state.data.push(newTab)
+    })
   },
   addGroup: (title) => {
     set((state) => {
-        const newGroup: GroupData = {
-          type: "group",
-          name: title,
-          value: []
-        };
-
-        state.data[state.currentTab].value.push(newGroup)
-        return {
-          data: [...state.data]
-        };
+      const newGroup: GroupData = {
+        type: "group",
+        name: title,
+        value: []
+      };
+      state.data[state.currentTab].value.push(newGroup)
     })
   }
-}), {name: 'zustand'}))
+})), {name: 'zustand'}))
