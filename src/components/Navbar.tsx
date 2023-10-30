@@ -24,7 +24,7 @@ export default function Navbar() {
       <img
         alt='Logo'
         src={logo}
-        className='h-14'
+        className='h-12'
       />
 
       <div className='flex gap-2'>
