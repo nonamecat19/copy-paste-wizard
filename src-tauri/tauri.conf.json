@@ -7,8 +7,8 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "copy-paste-wizard",
-    "version": "0.0.0"
+    "productName": "CopyPasteWizard",
+    "version": "1.0.0"
   },
   "tauri": {
     "allowlist": {
@@ -33,9 +33,13 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "copy-paste-wizard",
+        "title": "CopyPasteWizard",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "center": true,
+        "hiddenTitle": true,
+        "acceptFirstMouse": true,
+        "theme": "Dark"
       }
     ]
   }

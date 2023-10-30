@@ -30,7 +30,7 @@ export default function CopyElement({value, label, type}: IProps) {
       onClick={clickHandle}
       variant='secondary'
     >
-      {label ?? value}
+      {label && label.length ? label : value}
     </Button>
   )
 }

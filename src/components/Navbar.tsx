@@ -44,6 +44,7 @@ export default function Navbar() {
 
         <Button
           variant='outline'
+          disabled
         >
           Export
         </Button>
