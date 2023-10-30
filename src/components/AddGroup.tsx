@@ -56,7 +56,7 @@ export default function AddGroup() {
             type="submit"
             onClick={submitHandle}
           >
-            Add group
+            Submit
           </Button>
         </DialogFooter>
       </DialogContent>

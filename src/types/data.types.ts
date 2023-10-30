@@ -10,7 +10,7 @@ export interface TabData {
 export interface GroupData {
   type: "group"
   name: string
-  value: (GroupData | StringData | LinkData | PassData)[]
+  value: (StringData | LinkData | PassData)[]
 }
 
 interface BaseData {

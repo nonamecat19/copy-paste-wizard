@@ -1,5 +1,5 @@
 import {create} from 'zustand'
-import {ClipboardType, ElementType, GroupData, LinkData, PassData, StringData} from "@/types/data.types.ts";
+import {ClipboardType, ElementType} from "@/types/data.types.ts";
 import {persist} from "zustand/middleware";
 import {immer} from 'zustand/middleware/immer'
 
@@ -13,8 +13,10 @@ interface IActions {
   clearData: () => void
   setCurrentTab: (currentTab: number) => void
   addTab: (title: string) => void
-  addGroup: (title: string) => void
+  addGroup: (name: string) => void
   addElement: (value: string, type: ElementType, label: string, index: number) => void
+  editElement: (value: string, type: ElementType, label: string, index: number, index2: number) => void
+  deleteElement: (index: number, index2: number) => void
 }
 
 export const useDataStore = create<IStore & IActions>()
@@ -25,26 +27,33 @@ export const useDataStore = create<IStore & IActions>()
   clearData: () => set({data: []}),
   setCurrentTab: (currentTab) => set({currentTab}),
   addTab: (title) => set((state) => {
-      const newTab = {
+      state.data.push({
         title,
         value: []
-      }
-      state.data.push(newTab)
+      })
   }),
-  addGroup: (title) => set((state) => {
-    const newGroup: GroupData = {
+  addGroup: (name) => set((state) => {
+    state.data[state.currentTab].value.push({
       type: "group",
-      name: title,
+      name,
       value: []
-    };
-    state.data[state.currentTab].value.push(newGroup)
+    })
   }),
   addElement: (value, type, label, index) => set((state) => {
-    const newElement: StringData | LinkData | PassData = {
+    state.data[state.currentTab].value[index].value.push({
       type,
       label,
       value
-    };
-    state.data[state.currentTab].value[index].value.push(newElement)
+    })
+  }),
+  editElement: (value, type, label, index, index2) => set((state) => {
+    state.data[state.currentTab].value[index].value[index2] = {
+      type,
+      label,
+      value
+    }
+  }),
+  deleteElement: (index, index2) => set((state) => {
+    state.data[state.currentTab].value[index].value.splice(index2, 1)
   }),
 })), {name: 'zustand'}))

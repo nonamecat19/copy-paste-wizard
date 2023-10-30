@@ -54,7 +54,7 @@ export default function AddTab() {
             type='submit'
             onClick={handleSubmit}
           >
-            Add tab
+            Submit
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -2,6 +2,7 @@ import {useDataStore} from "@/store/useDataStore.ts";
 import CopyElement from "@/components/CopyElement.tsx";
 import AddGroup from "@/components/AddGroup.tsx";
 import AddElement from "@/components/AddElement.tsx";
+import ElementContextMenu from "@/components/ElementContextMenu.tsx";
 
 export default function MainBlock() {
   const store = useDataStore()
@@ -27,19 +28,19 @@ export default function MainBlock() {
 
             <div className='flex flex-wrap gap-2 mt-2'>
               {
-                value.map((el, index2) => {
-                  if (el.type === 'group') {
-                    return null
-                  }
-                  return (
-                    <CopyElement
-                      label={el.label}
-                      type={el.type}
-                      value={el.value}
+                value.map((el, index2) =>
+                    <ElementContextMenu
+                      index={index}
+                      index2={index2}
                       key={index2}
-                    />
-                  )
-                })
+                    >
+                      <CopyElement
+                        label={el.label}
+                        type={el.type}
+                        value={el.value}
+                      />
+                    </ElementContextMenu>
+                )
               }
               <AddElement index={index}/>
             </div>

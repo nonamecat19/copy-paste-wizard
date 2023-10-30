@@ -4,39 +4,42 @@ import {
   DialogDescription, DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
 } from "@/components/ui/dialog.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
-import {useState} from "react";
+import {Dispatch, useEffect, useState} from "react";
 import {useDataStore} from "@/store/useDataStore.ts";
 import {ElementType} from "@/types/data.types.ts";
 import {SelectValue, Select, SelectItem, SelectContent, SelectTrigger } from "./ui/select";
 
 interface IProps {
   index: number
+  index2: number
+  open: boolean
+  onOpenChange: Dispatch<boolean>
 }
 
-export default function AddElement({index}: IProps) {
+export default function EditElement({index, index2, onOpenChange, open}: IProps) {
+  const dataStore = useDataStore()
+
   const [value, setValue] = useState<string>('')
   const [type, setType] = useState<ElementType>('string')
   const [label, setLabel] = useState<string>('')
 
-  const dataStore = useDataStore()
+  useEffect(() => {
+    setValue('')
+    setType('string')
+    setLabel('')
+  }, [open])
 
   function handleSubmit() {
-    console.log({value, type, label, index})
-    dataStore.addElement(value, type, label, index)
+    dataStore.editElement(value, type, label, index, index2)
+    onOpenChange(false)
   }
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">
-          +
-        </Button>
-      </DialogTrigger>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>
