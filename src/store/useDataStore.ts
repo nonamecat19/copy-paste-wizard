@@ -13,6 +13,8 @@ interface IActions {
   clearData: () => void
   setCurrentTab: (currentTab: number) => void
   addTab: (title: string) => void
+  editTab: (title: string, index: number) => void
+  deleteTab: (index: number) => void
   addGroup: (name: string) => void
   addElement: (value: string, type: ElementType, label: string, index: number) => void
   editElement: (value: string, type: ElementType, label: string, index: number, index2: number) => void
@@ -26,12 +28,21 @@ export const useDataStore = create<IStore & IActions>()
   setData: (data) => set({data}),
   clearData: () => set({data: []}),
   setCurrentTab: (currentTab) => set({currentTab}),
+
   addTab: (title) => set((state) => {
       state.data.push({
         title,
         value: []
       })
   }),
+  editTab: (title, index) => set((state) => {
+    state.data[index].title = title
+  }),
+  deleteTab: (index) => set((state) => {
+    state.currentTab = 0
+    state.data.splice(index, 1)
+  }),
+
   addGroup: (name) => set((state) => {
     state.data[state.currentTab].value.push({
       type: "group",
@@ -39,6 +50,7 @@ export const useDataStore = create<IStore & IActions>()
       value: []
     })
   }),
+
   addElement: (value, type, label, index) => set((state) => {
     state.data[state.currentTab].value[index].value.push({
       type,

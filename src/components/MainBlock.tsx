@@ -8,10 +8,16 @@ export default function MainBlock() {
   const store = useDataStore()
 
   if (!store.data || store.data.length === 0) {
-    return <>No data</>
+    return <>Select the tab or create</>
   }
 
-  const {value: tabData} = store.data[store.currentTab]
+  const currentTab = store.data[store.currentTab]
+
+  if (!currentTab) {
+    return <>Select the tab or create</>
+  }
+
+  const {value: tabData} = currentTab
 
 
   return (
