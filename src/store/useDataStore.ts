@@ -1,5 +1,5 @@
 import {create} from 'zustand'
-import {ClipboardType, GroupData} from "@/types/data.types.ts";
+import {ClipboardType, ElementType, GroupData, LinkData, PassData, StringData} from "@/types/data.types.ts";
 import {persist} from "zustand/middleware";
 import {immer} from 'zustand/middleware/immer'
 
@@ -14,6 +14,7 @@ interface IActions {
   setCurrentTab: (currentTab: number) => void
   addTab: (title: string) => void
   addGroup: (title: string) => void
+  addElement: (value: string, type: ElementType, label: string, index: number) => void
 }
 
 export const useDataStore = create<IStore & IActions>()
@@ -23,23 +24,27 @@ export const useDataStore = create<IStore & IActions>()
   setData: (data) => set({data}),
   clearData: () => set({data: []}),
   setCurrentTab: (currentTab) => set({currentTab}),
-  addTab: (title) => {
-    set((state) => {
+  addTab: (title) => set((state) => {
       const newTab = {
         title,
         value: []
       }
       state.data.push(newTab)
-    })
-  },
-  addGroup: (title) => {
-    set((state) => {
-      const newGroup: GroupData = {
-        type: "group",
-        name: title,
-        value: []
-      };
-      state.data[state.currentTab].value.push(newGroup)
-    })
-  }
+  }),
+  addGroup: (title) => set((state) => {
+    const newGroup: GroupData = {
+      type: "group",
+      name: title,
+      value: []
+    };
+    state.data[state.currentTab].value.push(newGroup)
+  }),
+  addElement: (value, type, label, index) => set((state) => {
+    const newElement: StringData | LinkData | PassData = {
+      type,
+      label,
+      value
+    };
+    state.data[state.currentTab].value[index].value.push(newElement)
+  }),
 })), {name: 'zustand'}))

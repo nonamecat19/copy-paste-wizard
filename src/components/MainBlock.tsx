@@ -1,6 +1,7 @@
 import {useDataStore} from "@/store/useDataStore.ts";
 import CopyElement from "@/components/CopyElement.tsx";
 import AddGroup from "@/components/AddGroup.tsx";
+import AddElement from "@/components/AddElement.tsx";
 
 export default function MainBlock() {
   const store = useDataStore()
@@ -40,6 +41,7 @@ export default function MainBlock() {
                   )
                 })
               }
+              <AddElement index={index}/>
             </div>
           </div>
         )

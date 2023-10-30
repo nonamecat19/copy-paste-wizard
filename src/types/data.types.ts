@@ -1,4 +1,6 @@
 export type ClipboardType = TabData[]
+export type ElementType = "string" | "pass" | "link"
+
 
 export interface TabData {
   title: string
