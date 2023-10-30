@@ -2,7 +2,6 @@ import {create} from 'zustand'
 import {ClipboardType, GroupData} from "@/types/data.types.ts";
 import {persist} from "zustand/middleware";
 import {immer} from 'zustand/middleware/immer'
-import produce from 'immer';
 
 interface IStore {
   data: ClipboardType
