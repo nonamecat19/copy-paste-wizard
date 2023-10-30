@@ -1,7 +1,7 @@
 import {Button} from "@/components/ui/button.tsx";
 import {JsonService} from "@/services/json.service.ts";
 import {useDataStore} from "@/store/useDataStore.ts";
-import lgoo from "@/assets/logo.jpg"
+import logo from "@/assets/logo.jpg"
 
 export default function Navbar() {
   const dataStore = useDataStore()
@@ -23,7 +23,7 @@ export default function Navbar() {
     <nav className='border-b px-4 border-zinc-800 h-14 flex justify-between items-center'>
       <img
         alt='Logo'
-        src={lgoo}
+        src={logo}
         className='h-14'
       />
 
