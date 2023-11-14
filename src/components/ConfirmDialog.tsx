@@ -13,16 +13,18 @@ interface IProps {
   open: boolean
   successHandle: () => void
   onOpenChange: Dispatch<boolean>
+  title?: string
+  description?: string
 }
 
-export default function ConfirmDialog({open, onOpenChange, successHandle}: IProps) {
+export default function ConfirmDialog({open, onOpenChange, successHandle, title, description}: IProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you sure absolutely sure?</DialogTitle>
+          <DialogTitle>{title ?? 'Are you sure absolutely sure?'}</DialogTitle>
           <DialogDescription>
-            This action permanently.
+            {description ?? 'This action permanently.'}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>

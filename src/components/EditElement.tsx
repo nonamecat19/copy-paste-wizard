@@ -87,6 +87,7 @@ export default function EditElement({index, index2, onOpenChange, open}: IProps)
                 <SelectItem value="string">String</SelectItem>
                 <SelectItem value="link">Link</SelectItem>
                 <SelectItem value="pass">Password</SelectItem>
+                <SelectItem value="danger-link">Danger link</SelectItem>
               </SelectContent>
             </Select>
           </div>

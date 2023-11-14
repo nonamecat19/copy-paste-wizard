@@ -17,7 +17,7 @@ export default function TabsBlock() {
           <TabContextMenu
             index={index}
             key={index}
-          >
+          >(
             <Button
               variant={index === store.currentTab ? 'default' : 'secondary'}
               onClick={() => changeTabHandle(index)}
