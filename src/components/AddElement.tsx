@@ -1,25 +1,32 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription, DialogFooter,
+  DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from "@/components/ui/dialog.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
-import {useEffect, useState} from "react";
-import {useDataStore} from "@/store/useDataStore.ts";
-import {ElementType} from "@/types/data.types.ts";
-import {SelectValue, Select, SelectItem, SelectContent, SelectTrigger } from "./ui/select";
-import useSwitch from "@/hooks/useSwitch.ts";
+  DialogTrigger,
+} from '@/components/ui/dialog.tsx'
+import { Button } from '@/components/ui/button.tsx'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { useEffect, useState } from 'react'
+import { useDataStore } from '@/store/useDataStore.ts'
+import { ElementType } from '@/types/data.types.ts'
+import {
+  SelectValue,
+  Select,
+  SelectItem,
+  SelectContent,
+  SelectTrigger,
+} from './ui/select'
+import useSwitch from '@/hooks/useSwitch.ts'
 
 interface IProps {
   index: number
 }
 
-export default function AddElement({index}: IProps) {
+export default function AddElement({ index }: IProps) {
   const [value, setValue] = useState<string>('')
   const [type, setType] = useState<ElementType>('string')
   const [label, setLabel] = useState<string>('')
@@ -42,18 +49,12 @@ export default function AddElement({index}: IProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">
-          +
-        </Button>
+        <Button variant="outline">+</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>
-            Add element
-          </DialogTitle>
-          <DialogDescription>
-            Name edit in progress
-          </DialogDescription>
+          <DialogTitle>Add element</DialogTitle>
+          <DialogDescription>Name edit in progress</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
@@ -82,10 +83,7 @@ export default function AddElement({index}: IProps) {
             <Label htmlFor="type" className="text-right">
               Type
             </Label>
-            <Select
-              onValueChange={(e: ElementType) => setType(e)}
-              value={type}
-            >
+            <Select onValueChange={(e: ElementType) => setType(e)} value={type}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Theme" />
               </SelectTrigger>
@@ -99,10 +97,7 @@ export default function AddElement({index}: IProps) {
           </div>
         </div>
         <DialogFooter>
-          <Button
-            type='submit'
-            onClick={handleSubmit}
-          >
+          <Button type="submit" onClick={handleSubmit}>
             Submit
           </Button>
         </DialogFooter>

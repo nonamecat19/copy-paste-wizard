@@ -1,6 +1,5 @@
 export type ClipboardType = TabData[]
-export type ElementType = "string" | "pass" | "link" | "danger-link"
-
+export type ElementType = 'string' | 'pass' | 'link' | 'danger-link'
 
 export interface TabData {
   title: string
@@ -8,7 +7,7 @@ export interface TabData {
 }
 
 export interface GroupData {
-  type: "group"
+  type: 'group'
   name: string
   value: (StringData | LinkData | PassData | DangerLinkData)[]
 }
@@ -20,17 +19,17 @@ interface BaseData {
 }
 
 export interface StringData extends BaseData {
-  type: "string"
+  type: 'string'
 }
 
 export interface PassData extends BaseData {
-  type: "pass"
+  type: 'pass'
 }
 
 export interface LinkData extends BaseData {
-  type: "link"
+  type: 'link'
 }
 
 export interface DangerLinkData extends BaseData {
-  type: "danger-link"
+  type: 'danger-link'
 }

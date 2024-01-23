@@ -1,17 +1,24 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription, DialogFooter,
+  DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
-import {Dispatch, useEffect, useState} from "react";
-import {useDataStore} from "@/store/useDataStore.ts";
-import {ElementType} from "@/types/data.types.ts";
-import {SelectValue, Select, SelectItem, SelectContent, SelectTrigger } from "./ui/select";
+} from '@/components/ui/dialog.tsx'
+import { Button } from '@/components/ui/button.tsx'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Dispatch, useEffect, useState } from 'react'
+import { useDataStore } from '@/store/useDataStore.ts'
+import { ElementType } from '@/types/data.types.ts'
+import {
+  SelectValue,
+  Select,
+  SelectItem,
+  SelectContent,
+  SelectTrigger,
+} from './ui/select'
 
 interface IProps {
   index: number
@@ -20,7 +27,12 @@ interface IProps {
   onOpenChange: Dispatch<boolean>
 }
 
-export default function EditElement({index, index2, onOpenChange, open}: IProps) {
+export default function EditElement({
+  index,
+  index2,
+  onOpenChange,
+  open,
+}: IProps) {
   const dataStore = useDataStore()
 
   const [value, setValue] = useState<string>('')
@@ -42,12 +54,8 @@ export default function EditElement({index, index2, onOpenChange, open}: IProps)
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>
-            Add element
-          </DialogTitle>
-          <DialogDescription>
-            Name edit in progress
-          </DialogDescription>
+          <DialogTitle>Add element</DialogTitle>
+          <DialogDescription>Name edit in progress</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
@@ -76,10 +84,7 @@ export default function EditElement({index, index2, onOpenChange, open}: IProps)
             <Label htmlFor="type" className="text-right">
               Type
             </Label>
-            <Select
-              onValueChange={(e: ElementType) => setType(e)}
-              value={type}
-            >
+            <Select onValueChange={(e: ElementType) => setType(e)} value={type}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Theme" />
               </SelectTrigger>
@@ -93,10 +98,7 @@ export default function EditElement({index, index2, onOpenChange, open}: IProps)
           </div>
         </div>
         <DialogFooter>
-          <Button
-            type='submit'
-            onClick={handleSubmit}
-          >
+          <Button type="submit" onClick={handleSubmit}>
             Submit
           </Button>
         </DialogFooter>

@@ -5,9 +5,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "./ui/dialog";
-import {Dispatch} from "react";
-import {Button} from "@/components/ui/button.tsx";
+} from './ui/dialog'
+import { Dispatch } from 'react'
+import { Button } from '@/components/ui/button.tsx'
 
 interface IProps {
   open: boolean
@@ -17,7 +17,13 @@ interface IProps {
   description?: string
 }
 
-export default function ConfirmDialog({open, onOpenChange, successHandle, title, description}: IProps) {
+export default function ConfirmDialog({
+  open,
+  onOpenChange,
+  successHandle,
+  title,
+  description,
+}: IProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
@@ -28,11 +34,7 @@ export default function ConfirmDialog({open, onOpenChange, successHandle, title,
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button
-            variant="destructive"
-            type="submit"
-            onClick={successHandle}
-          >
+          <Button variant="destructive" type="submit" onClick={successHandle}>
             Confirm
           </Button>
         </DialogFooter>

@@ -4,12 +4,12 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
-import {Dispatch, useEffect, useState} from "react";
-import {useDataStore} from "@/store/useDataStore.ts";
+} from '@/components/ui/dialog.tsx'
+import { Button } from '@/components/ui/button.tsx'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Dispatch, useEffect, useState } from 'react'
+import { useDataStore } from '@/store/useDataStore.ts'
 
 interface IProps {
   index: number
@@ -17,7 +17,7 @@ interface IProps {
   onOpenChange: Dispatch<boolean>
 }
 
-export default function EditTab({index, onOpenChange, open}: IProps) {
+export default function EditTab({ index, onOpenChange, open }: IProps) {
   const dataStore = useDataStore()
 
   const [title, setTitle] = useState<string>('')
@@ -35,9 +35,7 @@ export default function EditTab({index, onOpenChange, open}: IProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>
-            Edit tab
-          </DialogTitle>
+          <DialogTitle>Edit tab</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
@@ -53,10 +51,7 @@ export default function EditTab({index, onOpenChange, open}: IProps) {
           </div>
         </div>
         <DialogFooter>
-          <Button
-            type='submit'
-            onClick={handleSubmit}
-          >
+          <Button type="submit" onClick={handleSubmit}>
             Submit
           </Button>
         </DialogFooter>

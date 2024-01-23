@@ -1,7 +1,7 @@
-import {Button} from "@/components/ui/button.tsx";
-import {JsonService} from "@/services/json.service.ts";
-import {useDataStore} from "@/store/useDataStore.ts";
-import logo from "@/assets/logo.jpg"
+import { Button } from '@/components/ui/button.tsx'
+import { JsonService } from '@/services/json.service.ts'
+import { useDataStore } from '@/store/useDataStore.ts'
+import logo from '@/assets/logo.jpg'
 
 export default function Navbar() {
   const dataStore = useDataStore()
@@ -20,36 +20,22 @@ export default function Navbar() {
   }
 
   return (
-    <nav className='border-b px-4 border-zinc-800 h-14 flex justify-between items-center'>
-      <img
-        alt='Logo'
-        src={logo}
-        className='h-12'
-      />
+    <nav className="border-b px-4 border-zinc-800 h-14 flex justify-between items-center">
+      <img alt="Logo" src={logo} className="h-12" />
 
-      <div className='flex gap-2'>
-        <Button
-          onClick={resetHandle}
-          variant='outline'
-        >
+      <div className="flex gap-2">
+        <Button onClick={resetHandle} variant="outline">
           Reset
         </Button>
 
-        <Button
-          onClick={importHandle}
-          variant='outline'
-        >
+        <Button onClick={importHandle} variant="outline">
           Import
         </Button>
 
-        <Button
-          variant='outline'
-          disabled
-        >
+        <Button variant="outline" disabled>
           Export
         </Button>
       </div>
-
     </nav>
   )
 }

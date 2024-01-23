@@ -1,14 +1,14 @@
-import {open} from "@tauri-apps/api/dialog";
-import {readTextFile} from "@tauri-apps/api/fs";
-import {ClipboardType} from "@/types/data.types.ts";
-import {localStorageKey} from "@/config/localStorage";
+import { open } from '@tauri-apps/api/dialog'
+import { readTextFile } from '@tauri-apps/api/fs'
+import { ClipboardType } from '@/types/data.types.ts'
+import { localStorageKey } from '@/config/localStorage'
 
 export class JsonService {
   static async importData(): Promise<ClipboardType | undefined> {
     try {
       const selectedPath = await open({
         multiple: false,
-        title: "Open JSON file"
+        title: 'Open JSON file',
       })
       if (!selectedPath || Array.isArray(selectedPath)) {
         throw new Error('No path found')
@@ -18,7 +18,7 @@ export class JsonService {
       localStorage.setItem(localStorageKey, text)
       return clipboardData as ClipboardType
     } catch (e) {
-      console.error({e})
+      console.error({ e })
     }
   }
 
@@ -30,7 +30,7 @@ export class JsonService {
       }
       return JSON.parse(text) as ClipboardType
     } catch (e) {
-      console.error({e})
+      console.error({ e })
     }
   }
 
@@ -38,7 +38,7 @@ export class JsonService {
     try {
       localStorage.removeItem(localStorageKey)
     } catch (e) {
-      console.error({e})
+      console.error({ e })
     }
   }
 }
