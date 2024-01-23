@@ -1,7 +1,9 @@
-import { open } from '@tauri-apps/api/dialog'
+import { open, save } from '@tauri-apps/api/dialog'
 import { readTextFile } from '@tauri-apps/api/fs'
 import { ClipboardType } from '@/types/data.types.ts'
 import { localStorageKey } from '@/config/localStorage'
+import { invoke } from '@tauri-apps/api'
+import { format } from 'date-fns'
 
 export class JsonService {
   static async importData(): Promise<ClipboardType | undefined> {
@@ -22,13 +24,17 @@ export class JsonService {
     }
   }
 
-  static loadData(): ClipboardType | undefined {
+  static async exportData(data: ClipboardType): Promise<void> {
     try {
-      const text = localStorage.getItem(localStorageKey)
-      if (!text) {
-        throw new Error('No data in localstorage')
-      }
-      return JSON.parse(text) as ClipboardType
+      const fileName = `save-${format(new Date(), 'ss:mm:hh dd|MM|yy')}.json`
+      const savePath = await save({
+        title: 'Save your backups',
+        defaultPath: fileName,
+      })
+      await invoke('save_file', {
+        path: savePath,
+        contents: JSON.stringify(data, null, '\t'),
+      })
     } catch (e) {
       console.error({ e })
     }

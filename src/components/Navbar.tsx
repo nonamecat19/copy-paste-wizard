@@ -19,6 +19,10 @@ export default function Navbar() {
     dataStore.clearData()
   }
 
+  function exportHandle() {
+    JsonService.exportData(dataStore.data)
+  }
+
   return (
     <nav className="border-b px-4 border-zinc-800 h-14 flex justify-between items-center">
       <img alt="Logo" src={logo} className="h-12" />
@@ -32,7 +36,7 @@ export default function Navbar() {
           Import
         </Button>
 
-        <Button variant="outline" disabled>
+        <Button onClick={exportHandle} variant="outline">
           Export
         </Button>
       </div>
