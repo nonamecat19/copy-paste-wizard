@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from './ui/dialog'
 import { Dispatch } from 'react'
-import { Button } from '@/components/ui/button.tsx'
+import { Button } from '@/components/ui/button'
 
 interface IProps {
   open: boolean

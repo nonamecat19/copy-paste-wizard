@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { ClipboardType, ElementType } from '@/types/data.types.ts'
+import { ClipboardType, ElementType } from '@/types/data.types'
 import { persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 

@@ -4,11 +4,11 @@ import {
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '@/components/ui/context-menu.tsx'
-import useSwitch from '@/hooks/useSwitch.ts'
-import ConfirmDialog from '@/components/ConfirmDialog.tsx'
-import EditElement from '@/components/EditElement.tsx'
-import { useDataStore } from '@/store/useDataStore.ts'
+} from '@/components/ui/context-menu'
+import useSwitch from '@/hooks/useSwitch'
+import ConfirmDialog from '@/components/ConfirmDialog'
+import EditElement from '@/components/EditElement'
+import { useDataStore } from '@/store/useDataStore'
 
 interface IProps {
   children: ReactNode

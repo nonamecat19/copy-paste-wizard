@@ -1,7 +1,7 @@
-import Navbar from '@/components/Navbar.tsx'
-import MainBlock from '@/components/MainBlock.tsx'
-import TabsBlock from '@/components/TabsBlock.tsx'
-import { Toaster } from '@/components/ui/toaster.tsx'
+import Navbar from '@/components/Navbar'
+import MainBlock from '@/components/MainBlock'
+import TabsBlock from '@/components/TabsBlock'
+import { Toaster } from '@/components/ui/toaster'
 
 export default function App() {
   return (

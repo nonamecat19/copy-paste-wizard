@@ -5,13 +5,13 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog.tsx'
-import { Button } from '@/components/ui/button.tsx'
+} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Dispatch, useEffect, useState } from 'react'
-import { useDataStore } from '@/store/useDataStore.ts'
-import { ElementType } from '@/types/data.types.ts'
+import { useDataStore } from '@/store/useDataStore'
+import { ElementType } from '@/types/data.types'
 import {
   SelectValue,
   Select,

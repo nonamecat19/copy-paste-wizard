@@ -1,8 +1,8 @@
-import { useDataStore } from '@/store/useDataStore.ts'
-import CopyElement from '@/components/CopyElement.tsx'
-import AddGroup from '@/components/AddGroup.tsx'
-import AddElement from '@/components/AddElement.tsx'
-import ElementContextMenu from '@/components/ElementContextMenu.tsx'
+import { useDataStore } from '@/store/useDataStore'
+import CopyElement from '@/components/CopyElement'
+import AddGroup from '@/components/AddGroup'
+import AddElement from '@/components/AddElement'
+import ElementContextMenu from '@/components/ElementContextMenu'
 
 export default function MainBlock() {
   const store = useDataStore()

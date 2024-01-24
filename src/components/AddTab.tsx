@@ -6,13 +6,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog.tsx'
-import { Button } from '@/components/ui/button.tsx'
+} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { useEffect, useState } from 'react'
-import { useDataStore } from '@/store/useDataStore.ts'
-import useSwitch from '@/hooks/useSwitch.ts'
+import { useDataStore } from '@/store/useDataStore'
+import useSwitch from '@/hooks/useSwitch'
 
 export default function AddTab() {
   const [name, setName] = useState<string>('')

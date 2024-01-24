@@ -1,8 +1,8 @@
-import { Button } from '@/components/ui/button.tsx'
+import { Button } from '@/components/ui/button'
 import { writeText } from '@tauri-apps/api/clipboard'
 import { open } from '@tauri-apps/api/shell'
 import { useToast } from '@/components/ui/use-toast'
-import ConfirmDialog from '@/components/ConfirmDialog.tsx'
+import ConfirmDialog from '@/components/ConfirmDialog'
 import { useState } from 'react'
 
 interface IProps {

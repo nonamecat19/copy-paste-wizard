@@ -1,7 +1,7 @@
-import { useDataStore } from '@/store/useDataStore.ts'
-import { Button } from '@/components/ui/button.tsx'
-import AddTab from '@/components/AddTab.tsx'
-import TabContextMenu from '@/components/TabContextMenu.tsx'
+import { useDataStore } from '@/store/useDataStore'
+import { Button } from '@/components/ui/button'
+import AddTab from '@/components/AddTab'
+import TabContextMenu from '@/components/TabContextMenu'
 
 export default function TabsBlock() {
   const store = useDataStore()

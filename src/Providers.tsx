@@ -1,5 +1,5 @@
 import { PropsWithChildren, StrictMode } from 'react'
-import { ThemeProvider } from '@/components/ThemeProvider.tsx'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 export default function Providers({ children }: PropsWithChildren) {
   return (

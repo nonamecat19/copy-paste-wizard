@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button.tsx'
-import { JsonService } from '@/services/json.service.ts'
-import { useDataStore } from '@/store/useDataStore.ts'
+import { Button } from '@/components/ui/button'
+import { JsonService } from '@/services/json.service'
+import { useDataStore } from '@/store/useDataStore'
 import logo from '@/assets/logo.jpg'
 
 export default function Navbar() {
