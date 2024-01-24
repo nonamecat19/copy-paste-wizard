@@ -1,12 +1,12 @@
 import { open, save } from '@tauri-apps/api/dialog'
 import { readTextFile } from '@tauri-apps/api/fs'
-import { ClipboardType } from '@/types/data.types.ts'
+import { ClipboardType } from '@/types/data.types'
 import { localStorageKey } from '@/config/localStorage'
 import { invoke } from '@tauri-apps/api'
 import { format } from 'date-fns'
 
 export class JsonService {
-  static async importData(): Promise<ClipboardType | undefined> {
+  public static async importData(): Promise<ClipboardType | undefined> {
     try {
       const selectedPath = await open({
         multiple: false,
@@ -24,7 +24,7 @@ export class JsonService {
     }
   }
 
-  static async exportData(data: ClipboardType): Promise<void> {
+  public static async exportData(data: ClipboardType): Promise<void> {
     try {
       const fileName = `save-${format(new Date(), 'ss:mm:hh dd|MM|yy')}.json`
       const savePath = await save({
@@ -40,7 +40,7 @@ export class JsonService {
     }
   }
 
-  static resetLocalData(): void {
+  public static resetLocalData(): void {
     try {
       localStorage.removeItem(localStorageKey)
     } catch (e) {
