@@ -13,12 +13,15 @@ import ConfirmDialog from '@/components/ConfirmDialog.tsx'
 import useSwitch from '@/hooks/useSwitch.ts'
 import i18n, { changeLanguage } from 'i18next'
 import { useTranslation } from 'react-i18next'
+import { useLocalizationStore } from '@/store/useLocalizationStore.ts'
+import { Lang } from '@/types/global.types.ts'
 
 export default function Settings() {
   const dataStore = useDataStore()
   const { setTheme, theme } = useTheme()
   const [openReset, setOpenReset, toggleReset] = useSwitch()
   const { t } = useTranslation()
+  const localizationStore = useLocalizationStore()
 
   async function importHandle() {
     const data = await JsonService.importData()
@@ -42,8 +45,9 @@ export default function Settings() {
     setTheme(value)
   }
 
-  async function changeLangHandle(lang: string) {
+  async function changeLangHandle(lang: Lang) {
     await changeLanguage(lang)
+    localizationStore.changeLang(lang)
   }
 
   return (
