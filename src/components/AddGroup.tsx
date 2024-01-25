@@ -13,10 +13,12 @@ import { Input } from '@/components/ui/input'
 import { useEffect, useState } from 'react'
 import { useDataStore } from '@/store/useDataStore'
 import useSwitch from '@/hooks/useSwitch'
+import { useTranslation } from 'react-i18next'
 
 export default function AddGroup() {
   const [name, setName] = useState<string>('')
   const dataStore = useDataStore()
+  const { t } = useTranslation()
 
   const [open, setOpen, switchOpen] = useSwitch()
 
@@ -36,13 +38,13 @@ export default function AddGroup() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add group</DialogTitle>
-          <DialogDescription>Edit in progress</DialogDescription>
+          <DialogTitle>{t('Add group')}</DialogTitle>
+          <DialogDescription>{t('Edit in progress')}</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
-              Title
+              {t('Title')}
             </Label>
             <Input
               id="Title"
@@ -54,7 +56,7 @@ export default function AddGroup() {
         </div>
         <DialogFooter>
           <Button type="submit" onClick={submitHandle}>
-            Submit
+            {t('Submit')}
           </Button>
         </DialogFooter>
       </DialogContent>

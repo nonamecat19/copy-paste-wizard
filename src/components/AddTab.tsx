@@ -13,10 +13,12 @@ import { Input } from '@/components/ui/input'
 import { useEffect, useState } from 'react'
 import { useDataStore } from '@/store/useDataStore'
 import useSwitch from '@/hooks/useSwitch'
+import { useTranslation } from 'react-i18next'
 
 export default function AddTab() {
   const [name, setName] = useState<string>('')
   const dataStore = useDataStore()
+  const { t } = useTranslation()
 
   const [open, setOpen, switchOpen] = useSwitch()
 
@@ -36,13 +38,13 @@ export default function AddTab() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add tab</DialogTitle>
-          <DialogDescription>Name edit in progress</DialogDescription>
+          <DialogTitle>{t('Add tab')}</DialogTitle>
+          <DialogDescription>{t('Name edit in progress')}</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
-              Name
+              {t('Name')}
             </Label>
             <Input
               id="name"
@@ -54,7 +56,7 @@ export default function AddTab() {
         </div>
         <DialogFooter>
           <Button type="submit" onClick={handleSubmit}>
-            Submit
+            {t('Submit')}
           </Button>
         </DialogFooter>
       </DialogContent>

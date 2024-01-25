@@ -3,18 +3,20 @@ import CopyElement from '@/components/CopyElement'
 import AddGroup from '@/components/AddGroup'
 import AddElement from '@/components/AddElement'
 import ElementContextMenu from '@/components/ElementContextMenu'
+import { useTranslation } from 'react-i18next'
 
 export default function MainBlock() {
   const store = useDataStore()
+  const { t } = useTranslation()
 
   if (!store.data || store.data.length === 0) {
-    return <>Select the tab or create</>
+    return <>{t('Select the tab or create')}</>
   }
 
   const currentTab = store.data[store.currentTab]
 
   if (!currentTab) {
-    return <>Select the tab or create</>
+    return <>{t('Select the tab or create')}</>
   }
 
   const { value: tabData } = currentTab

@@ -8,6 +8,7 @@ import {
 } from './ui/dialog'
 import { Dispatch } from 'react'
 import { Button } from '@/components/ui/button'
+import { useTranslation } from 'react-i18next'
 
 interface IProps {
   open: boolean
@@ -24,22 +25,22 @@ export default function ConfirmDialog({
   successHandle,
   title,
   description,
-  buttonText = 'Confirm',
 }: IProps) {
+  const { t } = useTranslation()
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-black dark:text-white">
-            {title ?? 'Are you sure absolutely sure?'}
+            {title ?? t('Are you sure absolutely sure?')}
           </DialogTitle>
           <DialogDescription>
-            {description ?? 'This action permanently.'}
+            {description ?? t('This action permanently.')}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <Button variant="destructive" type="submit" onClick={successHandle}>
-            {buttonText}
+            {t('Confirm')}
           </Button>
         </DialogFooter>
       </DialogContent>

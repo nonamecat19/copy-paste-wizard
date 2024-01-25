@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Dispatch, useEffect, useState } from 'react'
 import { useDataStore } from '@/store/useDataStore'
+import { useTranslation } from 'react-i18next'
 
 interface IProps {
   index: number
@@ -19,7 +20,7 @@ interface IProps {
 
 export default function EditTab({ index, onOpenChange, open }: IProps) {
   const dataStore = useDataStore()
-
+  const { t } = useTranslation()
   const [title, setTitle] = useState<string>('')
 
   useEffect(() => {
@@ -35,12 +36,12 @@ export default function EditTab({ index, onOpenChange, open }: IProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit tab</DialogTitle>
+          <DialogTitle>{t('Edit tab')}</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
-              Title
+              {t('Title')}
             </Label>
             <Input
               id="name"
@@ -52,7 +53,7 @@ export default function EditTab({ index, onOpenChange, open }: IProps) {
         </div>
         <DialogFooter>
           <Button type="submit" onClick={handleSubmit}>
-            Submit
+            {t('Submit')}
           </Button>
         </DialogFooter>
       </DialogContent>

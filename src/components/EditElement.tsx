@@ -19,6 +19,7 @@ import {
   SelectContent,
   SelectTrigger,
 } from './ui/select'
+import { useTranslation } from 'react-i18next'
 
 interface IProps {
   index: number
@@ -34,7 +35,7 @@ export default function EditElement({
   open,
 }: IProps) {
   const dataStore = useDataStore()
-
+  const { t } = useTranslation()
   const [value, setValue] = useState<string>('')
   const [type, setType] = useState<ElementType>('string')
   const [label, setLabel] = useState<string>('')
@@ -54,13 +55,13 @@ export default function EditElement({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add element</DialogTitle>
-          <DialogDescription>Name edit in progress</DialogDescription>
+          <DialogTitle>{t('Add element')}</DialogTitle>
+          <DialogDescription>{t('Name edit in progress')}</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
-              Value
+              {t('Value')}
             </Label>
             <Input
               id="name"
@@ -71,7 +72,7 @@ export default function EditElement({
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="label" className="text-right">
-              Label (not required)
+              {t('Label (not required)')}
             </Label>
             <Input
               id="label"
@@ -82,24 +83,24 @@ export default function EditElement({
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="type" className="text-right">
-              Type
+              {t('Type')}
             </Label>
             <Select onValueChange={(e: ElementType) => setType(e)} value={type}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Theme" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="string">String</SelectItem>
-                <SelectItem value="link">Link</SelectItem>
-                <SelectItem value="pass">Password</SelectItem>
-                <SelectItem value="danger-link">Danger link</SelectItem>
+                <SelectItem value="string">{t('String')}</SelectItem>
+                <SelectItem value="link">{t('Link')}</SelectItem>
+                <SelectItem value="pass">{t('Password')}</SelectItem>
+                <SelectItem value="danger-link">{t('Danger link')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
         </div>
         <DialogFooter>
           <Button type="submit" onClick={handleSubmit}>
-            Submit
+            {t('Submit')}
           </Button>
         </DialogFooter>
       </DialogContent>

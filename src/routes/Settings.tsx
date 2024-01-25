@@ -11,11 +11,14 @@ import {
 import { Theme, useTheme } from '@/components/ThemeProvider.tsx'
 import ConfirmDialog from '@/components/ConfirmDialog.tsx'
 import useSwitch from '@/hooks/useSwitch.ts'
+import { changeLanguage } from 'i18next'
+import { useTranslation } from 'react-i18next'
 
 export default function Settings() {
   const dataStore = useDataStore()
   const { setTheme, theme } = useTheme()
   const [openReset, setOpenReset, toggleReset] = useSwitch()
+  const { t } = useTranslation()
 
   async function importHandle() {
     const data = await JsonService.importData()
@@ -39,10 +42,14 @@ export default function Settings() {
     setTheme(value)
   }
 
+  async function changeLangHandle(lang: string) {
+    await changeLanguage(lang)
+  }
+
   return (
     <div className="m-2 flex flex-col gap-2">
       <Button onClick={() => setOpenReset(true)} variant="destructive">
-        Reset data
+        {t('Reset data')}
       </Button>
 
       <ConfirmDialog
@@ -52,22 +59,35 @@ export default function Settings() {
       />
 
       <Button onClick={importHandle} variant="outline">
-        Import from file
+        {t('Import from file')}
       </Button>
 
       <Button onClick={exportHandle} variant="outline">
-        Export to file
+        {t('Export to file')}
       </Button>
 
       <div className="flex gap-4 items-center">
-        <h3>Theme: </h3>
+        <h3>{t('Settings')}: </h3>
         <Select defaultValue={theme} onValueChange={changeThemeHandle}>
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select theme" />
+            <SelectValue placeholder={t('Theme')} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="dark">Dark</SelectItem>
-            <SelectItem value="light">Light</SelectItem>
+            <SelectItem value="dark">{t('Dark')}</SelectItem>
+            <SelectItem value="light">{t('Light')}</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="flex gap-4 items-center">
+        <h3>{t('Lang')}: </h3>
+        <Select defaultValue={theme} onValueChange={changeLangHandle}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder={t('Lang')} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="en">{t('English')}</SelectItem>
+            <SelectItem value="uk">{t('Ukrainian')}</SelectItem>
           </SelectContent>
         </Select>
       </div>

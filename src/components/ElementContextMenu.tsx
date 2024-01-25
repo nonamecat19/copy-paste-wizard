@@ -9,6 +9,7 @@ import useSwitch from '@/hooks/useSwitch'
 import ConfirmDialog from '@/components/ConfirmDialog'
 import EditElement from '@/components/EditElement'
 import { useDataStore } from '@/store/useDataStore'
+import { useTranslation } from 'react-i18next'
 
 interface IProps {
   children: ReactNode
@@ -22,7 +23,7 @@ export default function ElementContextMenu({
   index2,
 }: IProps) {
   const dataStore = useDataStore()
-
+  const { t } = useTranslation()
   const [openEdit, setOpenEdit, editSwitch] = useSwitch()
   const [openDelete, setOpenDelete, deleteSwitch] = useSwitch()
 
@@ -36,8 +37,12 @@ export default function ElementContextMenu({
       <ContextMenu>
         <ContextMenuTrigger>{children}</ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuItem onClick={editSwitch}>Edit element</ContextMenuItem>
-          <ContextMenuItem onClick={deleteSwitch}>Delete</ContextMenuItem>
+          <ContextMenuItem onClick={editSwitch}>
+            {t('Edit element')}
+          </ContextMenuItem>
+          <ContextMenuItem onClick={deleteSwitch}>
+            {t('Delete')}
+          </ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
 
