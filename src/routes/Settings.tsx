@@ -11,7 +11,7 @@ import {
 import { Theme, useTheme } from '@/components/ThemeProvider.tsx'
 import ConfirmDialog from '@/components/ConfirmDialog.tsx'
 import useSwitch from '@/hooks/useSwitch.ts'
-import { changeLanguage } from 'i18next'
+import i18n, { changeLanguage } from 'i18next'
 import { useTranslation } from 'react-i18next'
 
 export default function Settings() {
@@ -81,7 +81,7 @@ export default function Settings() {
 
       <div className="flex gap-4 items-center">
         <h3>{t('Lang')}: </h3>
-        <Select defaultValue={theme} onValueChange={changeLangHandle}>
+        <Select defaultValue={i18n.language} onValueChange={changeLangHandle}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder={t('Lang')} />
           </SelectTrigger>
