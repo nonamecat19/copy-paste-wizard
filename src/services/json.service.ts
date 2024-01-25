@@ -18,7 +18,7 @@ export class JsonService {
       const text = await readTextFile(selectedPath)
       const clipboardData = JSON.parse(text)
       localStorage.setItem(localStorageKey, text)
-      return clipboardData as ClipboardType
+      return clipboardData as ClipboardType //TODO: validation
     } catch (e) {
       console.error({ e })
     }
