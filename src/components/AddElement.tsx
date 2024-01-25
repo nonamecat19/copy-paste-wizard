@@ -85,7 +85,7 @@ export default function AddElement({ index }: IProps) {
               {t('Type')}
             </Label>
             <Select onValueChange={(e: ElementType) => setType(e)} value={type}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[180px] text-black dark:text-white">
                 <SelectValue placeholder="Theme" />
               </SelectTrigger>
               <SelectContent>
