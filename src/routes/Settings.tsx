@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button.tsx'
-import { useDataStore } from '@/store/useDataStore.ts'
-import { JsonService } from '@/services/json.service.ts'
+import { Button } from '@/components/ui/button'
+import { useDataStore } from '@/store/useDataStore'
+import { JsonService } from '@/services/json.service'
 
 export default function Settings() {
   const dataStore = useDataStore()
@@ -23,7 +23,7 @@ export default function Settings() {
   }
 
   return (
-    <div className="m-2 flex flex-col gap-2 ">
+    <div className="m-2 flex flex-col gap-2">
       <Button onClick={resetHandle} variant="outline">
         Reset data
       </Button>

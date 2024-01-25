@@ -1,5 +1,5 @@
 import logo from '@/assets/logo.jpg'
-import NavLink from '@/components/NavLink.tsx'
+import NavLink from '@/components/NavLink'
 
 export default function Navbar() {
   return (

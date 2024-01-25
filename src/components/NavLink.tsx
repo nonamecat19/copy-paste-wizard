@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Button } from '@/components/ui/button.tsx'
-import { PropsWithRequiredChildren } from '@/types/global.types.ts'
+import { Button } from '@/components/ui/button'
+import { PropsWithRequiredChildren } from '@/types/global.types'
 
 interface IProps extends PropsWithRequiredChildren {
   to: string
