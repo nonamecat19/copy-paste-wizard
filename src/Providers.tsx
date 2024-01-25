@@ -1,7 +1,8 @@
-import { PropsWithChildren, StrictMode } from 'react'
+import { StrictMode } from 'react'
 import { ThemeProvider } from '@/components/ThemeProvider'
+import { PropsWithRequiredChildren } from '@/types/global.types.ts'
 
-export default function Providers({ children }: PropsWithChildren) {
+export default function Providers({ children }: PropsWithRequiredChildren) {
   return (
     <StrictMode>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">

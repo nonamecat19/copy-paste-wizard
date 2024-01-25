@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { JsonService } from '@/services/json.service'
 import { useDataStore } from '@/store/useDataStore'
 import logo from '@/assets/logo.jpg'
+import NavLink from '@/components/NavLink.tsx'
 
 export default function Navbar() {
   const dataStore = useDataStore()
@@ -19,8 +20,8 @@ export default function Navbar() {
     dataStore.clearData()
   }
 
-  function exportHandle() {
-    JsonService.exportData(dataStore.data)
+  async function exportHandle() {
+    await JsonService.exportData(dataStore.data)
   }
 
   return (
@@ -39,6 +40,8 @@ export default function Navbar() {
         <Button onClick={exportHandle} variant="outline">
           Export
         </Button>
+        <NavLink to="/settings">Settings</NavLink>
+        <NavLink to="/">Home</NavLink>
       </div>
     </nav>
   )
