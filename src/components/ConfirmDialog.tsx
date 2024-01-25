@@ -15,6 +15,7 @@ interface IProps {
   onOpenChange: Dispatch<boolean>
   title?: string
   description?: string
+  buttonText?: string
 }
 
 export default function ConfirmDialog({
@@ -23,19 +24,22 @@ export default function ConfirmDialog({
   successHandle,
   title,
   description,
+  buttonText = 'Confirm',
 }: IProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{title ?? 'Are you sure absolutely sure?'}</DialogTitle>
+          <DialogTitle className="text-black dark:text-white">
+            {title ?? 'Are you sure absolutely sure?'}
+          </DialogTitle>
           <DialogDescription>
             {description ?? 'This action permanently.'}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <Button variant="destructive" type="submit" onClick={successHandle}>
-            Confirm
+            {buttonText}
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -9,10 +9,13 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Theme, useTheme } from '@/components/ThemeProvider.tsx'
+import ConfirmDialog from '@/components/ConfirmDialog.tsx'
+import useSwitch from '@/hooks/useSwitch.ts'
 
 export default function Settings() {
   const dataStore = useDataStore()
   const { setTheme, theme } = useTheme()
+  const [openReset, setOpenReset, toggleReset] = useSwitch()
 
   async function importHandle() {
     const data = await JsonService.importData()
@@ -25,6 +28,7 @@ export default function Settings() {
   function resetHandle() {
     JsonService.resetLocalData()
     dataStore.clearData()
+    toggleReset()
   }
 
   async function exportHandle() {
@@ -37,9 +41,15 @@ export default function Settings() {
 
   return (
     <div className="m-2 flex flex-col gap-2">
-      <Button onClick={resetHandle} variant="outline">
+      <Button onClick={() => setOpenReset(true)} variant="destructive">
         Reset data
       </Button>
+
+      <ConfirmDialog
+        open={openReset}
+        successHandle={resetHandle}
+        onOpenChange={setOpenReset}
+      />
 
       <Button onClick={importHandle} variant="outline">
         Import from file
