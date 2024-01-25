@@ -23,7 +23,7 @@ export default function MainBlock() {
     <div className="flex flex-col gap-2 p-2">
       {tabData.map(({ name, value }, index) => (
         <div
-          className="bg-zinc-950 border border-zinc-800 p-2 rounded-lg"
+          className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-2 rounded-lg"
           key={index}
         >
           <div>{name}</div>

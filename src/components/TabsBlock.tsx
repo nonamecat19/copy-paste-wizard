@@ -11,7 +11,7 @@ export default function TabsBlock() {
   }
 
   return (
-    <div className="border-b gap-2 px-4 border-zinc-800 h-14 flex items-center">
+    <div className="border-b gap-2 px-4 border-zinc-200 dark:border-zinc-800 h-14 flex items-center">
       {store.data.map(({ title }, index) => (
         <TabContextMenu index={index} key={index}>
           <Button
