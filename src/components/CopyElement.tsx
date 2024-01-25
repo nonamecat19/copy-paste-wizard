@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button'
 import { writeText } from '@tauri-apps/api/clipboard'
 import { open } from '@tauri-apps/api/shell'
-import { useToast } from '@/components/ui/use-toast'
 import ConfirmDialog from '@/components/ConfirmDialog'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 interface IProps {
   type: 'string' | 'pass' | 'link' | 'danger-link'
@@ -12,7 +12,6 @@ interface IProps {
 }
 
 export default function CopyElement({ value, label, type }: IProps) {
-  const { toast } = useToast()
   const [openConfirm, setOpenConfirm] = useState<boolean>(false)
 
   function openDanger() {
@@ -26,10 +25,7 @@ export default function CopyElement({ value, label, type }: IProps) {
     }
 
     await writeText(value)
-    toast({
-      description: 'Copied to clipboard',
-      duration: 1000,
-    })
+    toast('Copied to clipboard', { duration: 2000 })
   }
 
   async function confirmDanger() {
