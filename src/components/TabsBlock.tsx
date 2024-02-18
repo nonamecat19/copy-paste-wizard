@@ -1,9 +1,8 @@
-import { useDataStore } from '@/store/useDataStore'
-import { Button } from '@/components/ui/button'
-import AddTab from '@/components/AddTab'
-import TabContextMenu from '@/components/TabContextMenu'
+import { useDataStore } from '@/store'
+import { Button } from '@ui'
+import { AddTab, TabContextMenu } from '@/components'
 
-export default function TabsBlock() {
+export function TabsBlock() {
   const store = useDataStore()
 
   function changeTabHandle(index: number) {

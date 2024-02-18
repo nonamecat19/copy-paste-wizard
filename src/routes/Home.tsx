@@ -1,7 +1,6 @@
-import TabsBlock from '@/components/TabsBlock'
-import MainBlock from '@/components/MainBlock'
+import { MainBlock, TabsBlock } from '@/components'
 
-export default function Home() {
+export function Home() {
   return (
     <>
       <TabsBlock />

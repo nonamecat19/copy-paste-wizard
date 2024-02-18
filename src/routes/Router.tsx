@@ -1,10 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Settings from '@/routes/Settings'
-import Home from '@/routes/Home'
-import MainLayout from '@/routes/MainLayout'
+import { Home, MainLayout, Settings } from '@/routes'
 import { useEffect } from 'react'
 import { changeLanguage } from 'i18next'
-import { useLocalizationStore } from '@/store/useLocalizationStore.ts'
+import { useLocalizationStore } from '@/store'
 
 const router = createBrowserRouter([
   {
@@ -23,7 +21,7 @@ const router = createBrowserRouter([
   },
 ])
 
-export default function Router() {
+export function Router() {
   const localizationStore = useLocalizationStore()
   useEffect(() => {
     changeLanguage(localizationStore.lang).then()

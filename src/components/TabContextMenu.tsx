@@ -4,18 +4,17 @@ import {
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '@/components/ui/context-menu'
-import useSwitch from '@/hooks/useSwitch'
-import ConfirmDialog from '@/components/ConfirmDialog'
-import { useDataStore } from '@/store/useDataStore'
-import EditTab from '@/components/EditTab'
+} from '@ui'
+import { useSwitch } from '@/hooks'
+import { ConfirmDialog, EditTab } from '@/components'
+import { useDataStore } from '@/store'
 
 interface IProps {
   children: ReactNode
   index: number
 }
 
-export default function TabContextMenu({ children, index }: IProps) {
+export function TabContextMenu({ children, index }: IProps) {
   const dataStore = useDataStore()
 
   const [openEdit, setOpenEdit, editSwitch] = useSwitch()

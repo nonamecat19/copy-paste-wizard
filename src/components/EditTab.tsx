@@ -1,15 +1,15 @@
 import {
+  Button,
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
+  Input,
+  Label,
+} from '@ui'
 import { Dispatch, useEffect, useState } from 'react'
-import { useDataStore } from '@/store/useDataStore'
+import { useDataStore } from '@/store'
 import { useTranslation } from 'react-i18next'
 
 interface IProps {
@@ -18,7 +18,7 @@ interface IProps {
   onOpenChange: Dispatch<boolean>
 }
 
-export default function EditTab({ index, onOpenChange, open }: IProps) {
+export function EditTab({ index, onOpenChange, open }: IProps) {
   const dataStore = useDataStore()
   const { t } = useTranslation()
   const [title, setTitle] = useState<string>('')

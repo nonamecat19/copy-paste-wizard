@@ -1,24 +1,22 @@
 import {
+  Button,
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
-import { Dispatch, useEffect, useState } from 'react'
-import { useDataStore } from '@/store/useDataStore'
-import { ElementType } from '@/types/data.types'
-import {
-  SelectValue,
+  Input,
+  Label,
   Select,
-  SelectItem,
   SelectContent,
+  SelectItem,
   SelectTrigger,
-} from './ui/select'
+  SelectValue,
+} from '@ui'
+import { Dispatch, useEffect, useState } from 'react'
+import { useDataStore } from '@/store'
+import { ElementType } from '@/types'
 import { useTranslation } from 'react-i18next'
 
 interface IProps {
@@ -28,12 +26,7 @@ interface IProps {
   onOpenChange: Dispatch<boolean>
 }
 
-export default function EditElement({
-  index,
-  index2,
-  onOpenChange,
-  open,
-}: IProps) {
+export function EditElement({ index, index2, onOpenChange, open }: IProps) {
   const dataStore = useDataStore()
   const { t } = useTranslation()
   const [value, setValue] = useState<string>('')

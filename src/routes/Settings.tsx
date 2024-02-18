@@ -1,22 +1,21 @@
-import { Button } from '@/components/ui/button'
-import { useDataStore } from '@/store/useDataStore'
-import { JsonService } from '@/services/json.service'
 import {
+  Button,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import { Theme, useTheme } from '@/components/ThemeProvider.tsx'
-import ConfirmDialog from '@/components/ConfirmDialog.tsx'
-import useSwitch from '@/hooks/useSwitch.ts'
+} from '@ui'
+import { useDataStore } from '@/store'
+import { JsonService } from '@/services'
+import { Theme, useTheme, ConfirmDialog } from '@/components'
+import { useSwitch } from '@/hooks'
 import i18n, { changeLanguage } from 'i18next'
 import { useTranslation } from 'react-i18next'
-import { useLocalizationStore } from '@/store/useLocalizationStore.ts'
-import { Lang } from '@/types/global.types.ts'
+import { Lang } from '@/types'
+import { useLocalizationStore } from '@/store'
 
-export default function Settings() {
+export function Settings() {
   const dataStore = useDataStore()
   const { setTheme, theme } = useTheme()
   const [openReset, setOpenReset, toggleReset] = useSwitch()

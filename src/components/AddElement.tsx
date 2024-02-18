@@ -1,4 +1,5 @@
 import {
+  Button,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -6,28 +7,25 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
-import { useEffect, useState } from 'react'
-import { useDataStore } from '@/store/useDataStore'
-import { ElementType } from '@/types/data.types'
-import {
-  SelectValue,
+  Input,
+  Label,
   Select,
-  SelectItem,
   SelectContent,
+  SelectItem,
   SelectTrigger,
-} from './ui/select'
-import useSwitch from '@/hooks/useSwitch'
+  SelectValue,
+} from '@ui'
+import { useEffect, useState } from 'react'
+import { useDataStore } from '@/store'
+import { ElementType } from '@/types'
+import { useSwitch } from '@/hooks'
 import { useTranslation } from 'react-i18next'
 
 interface IProps {
   index: number
 }
 
-export default function AddElement({ index }: IProps) {
+export function AddElement({ index }: IProps) {
   const [value, setValue] = useState<string>('')
   const [type, setType] = useState<ElementType>('string')
   const [label, setLabel] = useState<string>('')

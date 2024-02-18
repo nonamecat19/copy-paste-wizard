@@ -1,13 +1,13 @@
 import {
+  Button,
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from './ui/dialog'
+} from '@ui'
 import { Dispatch } from 'react'
-import { Button } from '@/components/ui/button'
 import { useTranslation } from 'react-i18next'
 
 interface IProps {
@@ -19,7 +19,7 @@ interface IProps {
   buttonText?: string
 }
 
-export default function ConfirmDialog({
+export function ConfirmDialog({
   open,
   onOpenChange,
   successHandle,

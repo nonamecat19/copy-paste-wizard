@@ -1,11 +1,13 @@
-import { useDataStore } from '@/store/useDataStore'
-import CopyElement from '@/components/CopyElement'
-import AddGroup from '@/components/AddGroup'
-import AddElement from '@/components/AddElement'
-import ElementContextMenu from '@/components/ElementContextMenu'
+import { useDataStore } from '@/store'
+import {
+  AddElement,
+  AddGroup,
+  CopyElement,
+  ElementContextMenu,
+} from '@/components'
 import { useTranslation } from 'react-i18next'
 
-export default function MainBlock() {
+export function MainBlock() {
   const store = useDataStore()
   const { t } = useTranslation()
 

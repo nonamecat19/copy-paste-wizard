@@ -4,11 +4,11 @@ import {
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '@/components/ui/context-menu'
-import useSwitch from '@/hooks/useSwitch'
-import ConfirmDialog from '@/components/ConfirmDialog'
-import EditElement from '@/components/EditElement'
-import { useDataStore } from '@/store/useDataStore'
+} from '@ui'
+import { useSwitch } from '@/hooks'
+import { ConfirmDialog } from '@/components'
+import { EditElement } from '@/components'
+import { useDataStore } from '@/store'
 import { useTranslation } from 'react-i18next'
 
 interface IProps {
@@ -17,11 +17,7 @@ interface IProps {
   index2: number
 }
 
-export default function ElementContextMenu({
-  children,
-  index,
-  index2,
-}: IProps) {
+export function ElementContextMenu({ children, index, index2 }: IProps) {
   const dataStore = useDataStore()
   const { t } = useTranslation()
   const [openEdit, setOpenEdit, editSwitch] = useSwitch()

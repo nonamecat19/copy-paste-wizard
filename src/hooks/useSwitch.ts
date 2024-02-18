@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function useSwitch(initialValue: boolean = false) {
+export function useSwitch(initialValue: boolean = false) {
   const [value, setValue] = useState<boolean>(initialValue)
 
   function toggle() {
